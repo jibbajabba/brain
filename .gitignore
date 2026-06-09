@@ -1,0 +1,11 @@
+.DS_Store
+.claude/settings.local.json
+.claude/*.log
+
+me/
+people/
+companies/
+raw/
+journal/
+Tasks.html
+Today.html
