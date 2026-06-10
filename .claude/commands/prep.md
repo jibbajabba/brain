@@ -2,6 +2,10 @@ Prepare the user for an upcoming conversation. The subject is: $ARGUMENTS
 
 The subject may be a person's name, a company, or both (for example "[client] standup" or "Jane Doe"). If it's empty, ask who or what the meeting is with.
 
+## Get today's date first
+
+Run `date '+%Y-%m-%d (%A)'` in the shell before doing anything else. Use that output for all date resolution below. Never infer today's date or weekday from session context or memory — always use the shell clock.
+
 1. If a person is named, read their note in `people/`. If the note doesn't exist or is thin, say so and ask the user for context rather than inventing any.
 2. If a company is named or implied (for example the person works at [client]), read that company note (for example `companies/[client]/[client].md`) and the two or three most recent notes in its `meetings/` folder.
 3. Read `me/profile.md` for the user's goals and what he's optimizing for, so the prep serves his actual interests.
@@ -21,7 +25,7 @@ Base everything on what the notes actually contain. Never invent people, history
 
 After producing the brief, save it as a file:
 
-- Infer the meeting date from the subject: if a day name is given (e.g. "Tuesday"), resolve it to the nearest upcoming date as YYYY-MM-DD. If no day is given, use today's date.
+- Infer the meeting date from the subject: if a day name is given (e.g. "Tuesday"), resolve it to the nearest upcoming date as YYYY-MM-DD, counting forward from the shell `date` output above (if the named day is today, use today). If no day is given, use today's date from that same output.
 - Determine the correct `meetings/` folder from the company context (e.g. `companies/[client]/meetings/`). For a person-only prep with no company, save to `raw/prep/`.
 - Filename: `YYYY-MM-DD-[slugified-subject]-prep.md` (e.g. `2026-06-03-acme-tuesday-standup-prep.md`).
 - File structure: YAML frontmatter with `type: prep`, `date`, and `subject`, followed by the full brief content exactly as shown in chat.

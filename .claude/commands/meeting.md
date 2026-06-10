@@ -14,7 +14,7 @@ Do the following with Opus-level care.
 
    **Work / client calls** — determine the company from the transcript or filename. If the `companies/[company]/` folder doesn't exist, create it along with `companies/[company]/meetings/` and `companies/[company]/transcripts/` subfolders and a stub company note at `companies/[company]/[company].md`.
 
-   Write a clean meeting note to the appropriate `meetings/` folder. Name it `YYYY-MM-DD-topic.md` using the date and topic from the transcript or filename.
+   Write a clean meeting note to the appropriate `meetings/` folder. Name it `YYYY-MM-DD-topic.md` using the date and topic from the transcript or filename. If neither gives a date (e.g. the source is the user's inline notes, or says "today"/"yesterday"), run `date '+%Y-%m-%d (%A)'` in the shell and resolve from that — never infer the date from session context or memory.
 
    Before writing, check whether a prep file exists for the same date in that folder — look for any file matching `YYYY-MM-DD-*-prep.md` where the date matches. If one exists, read it and include its content as the first section of the meeting note under the heading `## Pre-meeting prep`, then continue with the normal structure below it. This merges the forward-looking context with the actual meeting record in one file.
 

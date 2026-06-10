@@ -4,6 +4,8 @@ Input: $ARGUMENTS
 
 ## Behavior
 
+Whenever you need today's date or have to resolve a relative one ("yesterday", "June 1"), run `date '+%Y-%m-%d (%A)'` in the shell and compute from that output. Never infer the date from session context or memory.
+
 **If $ARGUMENTS is empty:**
 Resolve today's date in YYYY-MM-DD format. Check whether `journal/YYYY-MM-DD.md` exists.
 - If it doesn't exist: create it with a single header (`# YYYY-MM-DD`) followed by a blank line.

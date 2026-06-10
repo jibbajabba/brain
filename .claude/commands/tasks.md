@@ -7,6 +7,10 @@ Input: $ARGUMENTS
 - If it starts with `wontdo:` — find the closest matching unchecked task and mark it `[-]` in the source file (decided not to do / cancelled), then re-scan and regenerate the HTML. If multiple tasks match, ask the user to clarify before making any change.
 - If it starts with `add:` — parse the format `add: [destination] | [task text]` where destination is a person's name or the client slug. Add a new `- [ ] task text` line to the appropriate Open threads section in `people/[firstname-lastname].md` or `companies/[client]/[client].md`, then re-scan and regenerate.
 
+## Step 0 — Get today's date
+
+Run `date '+%A, %B %-d, %Y'` in the shell before anything else. Use that output for the HTML header, the `Updated:` line, and any "last N days" cutoffs. Never infer the date from session context or memory — always use the shell clock.
+
 ## Step 1 — Scan for open tasks
 
 Read these files and extract every unchecked `- [ ]` item (skip `[x]` done and `[-]` wontdo items):
